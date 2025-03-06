@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+      </head>
+  <body >
+     
+ <main class="flex justify-center items-center min-h-screen bg-gray-500">
+    <div class="customSelect w-[300px] bg-white  rounded relative">
+        <input type="hidden" name=""/>
+        <div id="star-option" class=" flex justify-between items-center"><span>Choose</span> <i class="fa fa-angle-up  "></i> </div>
+
+        <div id="starDropOptions" class="space-y-3 absolute bg-white w-full mt-2 px-2 py-3 rounded">
+             <div id="starOptionSearch" class="flex bg-slate-100 rounded py-2">
+                <input type="search" placeholder="search" class="flex-1"/>
+                <i class="fa fa-search"></i>
+             </div>
+
+            <p>Option 1</p>
+            <p>Option 2</p>
+            <p>Option 3</p>
+            <p>Option 4</p>
+            <p>Option 5</p>
+        </div>
+    </div>
+ </main>
+    
+ <script>
+    const starOption = document.querySelector("#star-option")
+    const starOptionIcon = document.querySelector("#star-option i")
+    const starOptionText = document.querySelector("#star-option span")
+    const starDropOptions = document.querySelector("#starDropOptions")
+//   console.log(starOption)
+
+    starOption.addEventListener("click",function (){
+         toggleDropdownIcon(starOptionIcon)
+         toggleDropdownOptions(starDropOptions)
+    })
+
+    function toggleDropdownIcon(element){
+        
+        if(element.classList.contains("fa-angle-down")){
+           element.classList.remove("fa-angle-down")
+           element.classList.add("fa-angle-up")
+        }
+        else{
+            element.classList.remove("fa-angle-up")
+            element.classList.add("fa-angle-down")
+        }
+    }
+
+    function toggleDropdownOptions(element){
+        if(element.classList.contains("hidden")){
+           element.classList.remove("hidden")
+          
+        }
+        else{
+            
+            element.classList.add("hidden")
+        }
+    }
+
+ </script>
+  </body>
+</html>
