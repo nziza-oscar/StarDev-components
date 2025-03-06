@@ -12,19 +12,19 @@
  <main class="flex justify-center items-center min-h-screen bg-gray-500">
     <div class="customSelect w-[300px] bg-white  rounded relative">
         <input type="hidden" name=""/>
-        <div id="star-option" class=" flex justify-between items-center"><span>Choose</span> <i class="fa fa-angle-up  "></i> </div>
+        <div id="star-option" class=" flex justify-between items-center py-2 px-2"><span>Choose</span> <i class="fa fa-angle-up  "></i> </div>
 
-        <div id="starDropOptions" class="space-y-3 absolute bg-white w-full mt-2 px-2 py-3 rounded">
-             <div id="starOptionSearch" class="flex bg-slate-100 rounded py-2">
-                <input type="search" placeholder="search" class="flex-1"/>
-                <i class="fa fa-search"></i>
+        <div id="starDropOptions" class="space-y-2 absolute bg-white w-full mt-2 px-2 py-3 rounded">
+             <div  class="flex bg-blue-100 rounded py-2 px-2 items-center ">
+                <input  type="text" placeholder="Search.." class="flex-1 outline-none text-gray-600" id="starOptionSearch"/>
+                <i class="fa fa-search text-gray-500"></i>
              </div>
 
-            <p>Option 1</p>
-            <p>Option 2</p>
-            <p>Option 3</p>
-            <p>Option 4</p>
-            <p>Option 5</p>
+            <p class="hover:bg-blue-400 px-2 py-2 text-sm cursor-pointer text-500 rounded hover:text-white">Option 1</p>
+            <p class="hover:bg-blue-400 px-2 py-2 text-sm cursor-pointer text-500 rounded hover:text-white">Option 2</p>
+            <p class="hover:bg-blue-400 px-2 py-2 text-sm cursor-pointer text-500 rounded hover:text-white">Option 3</p>
+            <p class="hover:bg-blue-400 px-2 py-2 text-sm cursor-pointer text-500 rounded hover:text-white">Option 4</p>
+            <p class="hover:bg-blue-400 px-2 py-2 text-sm cursor-pointer text-500 rounded hover:text-white">Option 5</p>
         </div>
     </div>
  </main>
@@ -34,11 +34,18 @@
     const starOptionIcon = document.querySelector("#star-option i")
     const starOptionText = document.querySelector("#star-option span")
     const starDropOptions = document.querySelector("#starDropOptions")
+    const starDropOptionsContents = document.querySelectorAll("#starDropOptions p")
+    const starOptionSearch = document.querySelector("#starOptionSearch")
 //   console.log(starOption)
 
     starOption.addEventListener("click",function (){
          toggleDropdownIcon(starOptionIcon)
          toggleDropdownOptions(starDropOptions)
+    })
+
+    starOptionSearch.addEventListener("input",function(){
+        const term = this.value.toLowerCase();
+        starDropOptionsContents.forEach((p)=>p.classList.add(p.textContent.toLowerCase().includes(term) ? "" : "hidden"))
     })
 
     function toggleDropdownIcon(element){
